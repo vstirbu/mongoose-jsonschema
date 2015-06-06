@@ -1,0 +1,25 @@
+{
+  "name": "mongoose-jsonschema",
+  "version": "0.1.0",
+  "description": "Mongoose schema to JSON schema and back",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mongoose",
+    "schema",
+    "json"
+  ],
+  "author": "Vlad Stirbu <vstirbu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "mongoose": "^3.8.24",
+    "mongoose-schema-extend": "^0.1.7"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5"
+  }
+}
