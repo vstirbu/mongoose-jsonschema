@@ -1,2 +1,2 @@
-# Mongoose schema to JSONSchema and back
+# Mongoose schema to JSON schema and back
 

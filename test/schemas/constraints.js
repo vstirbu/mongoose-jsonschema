@@ -7,9 +7,13 @@ var schema = new mongoose.Schema({
   required: {
     type: String,
     required: true
+  },
+  enumed: {
+    type: String,
+    enum: ['one', 'two']
   }
 });
 
-var model = mongoose.model('Simple', schema);
+var model = mongoose.model('Constraints', schema);
 
 module.exports = model;

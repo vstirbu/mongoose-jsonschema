@@ -1,2 +1,3 @@
 /* global global */
-require('../schemas/simple');
+require('../schemas/constraints');
+require('../schemas/types');
