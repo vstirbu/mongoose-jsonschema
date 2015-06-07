@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
   root: {
-		nestedProp: String
+		nestedProp: {
+			type: String,
+			required: true
+		}
 	}
 });
 
