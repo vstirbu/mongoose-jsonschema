@@ -48,4 +48,12 @@ describe('modelToJSONSchema', function () {
     
     done();
   });
+  
+  it('should convert nested schema', function () {
+    var jsonSchema = lib.modelToJSONSchema(mongoose.model('Nested'));
+    
+    console.log(jsonSchema);
+    expect(jsonSchema.properties.root.properties).to.exist;
+    expect(jsonSchema.properties.root.properties.nestedProp).to.exist;
+  });
 });
