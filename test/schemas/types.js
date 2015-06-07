@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
 	arrayProp: Array,
-	array2Prop: [{
+	arrayTypedProp: [{
 		type: Object
 	}],
 	booleanProp: Boolean,

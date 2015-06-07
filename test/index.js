@@ -14,7 +14,11 @@ describe('modelToJSONSchema', function () {
     var jsonSchema = lib.modelToJSONSchema(mongoose.model('Types'));
     
     expect(jsonSchema.properties.arrayProp.type).to.be.equal('array');
-    expect(jsonSchema.properties.array2Prop.type).to.be.equal('array');
+    
+    expect(jsonSchema.properties.arrayTypedProp.type).to.be.equal('array');
+    expect(jsonSchema.properties.arrayTypedProp.items).to.be.deep.equal({
+      type: 'object'
+    });
     
     expect(jsonSchema.properties.booleanProp.type).to.be.equal('boolean');
     
