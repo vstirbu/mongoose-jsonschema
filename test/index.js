@@ -31,13 +31,16 @@ describe('modelToJSONSchema', function () {
   it('should convert constraints', function (done) {
     var jsonSchema = lib.modelToJSONSchema(mongoose.model('Constraints'));
     
-    expect(jsonSchema.properties.prop.type).to.be.equal('string');
+    expect(jsonSchema.properties.simpleProp).to.exist;
     
-    expect(jsonSchema.properties.required.type).to.be.equal('string');
-    expect(jsonSchema.required).to.be.deep.equal(['required']);
+    expect(jsonSchema.properties.requiredProp).to.exist;
+    expect(jsonSchema.required).to.be.deep.equal(['requiredProp']);
     
-    expect(jsonSchema.properties.enumed.type).to.be.equal('string');
-    expect(jsonSchema.properties.enumed.enum).to.be.deep.equal(['one', 'two']);
+    expect(jsonSchema.properties.enumedProp).to.exist;
+    expect(jsonSchema.properties.enumedProp.enum).to.be.deep.equal(['one', 'two']);
+    
+    expect(jsonSchema.properties.defaultProp).to.exist;
+    expect(jsonSchema.properties.defaultProp.default).to.be.equal('default-value');
     
     done();
   });

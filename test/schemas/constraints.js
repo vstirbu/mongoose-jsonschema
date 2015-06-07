@@ -1,16 +1,20 @@
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-  prop: {
+  simpleProp: {
     type: String
   },
-  required: {
+  requiredProp: {
     type: String,
     required: true
   },
-  enumed: {
+  enumedProp: {
     type: String,
     enum: ['one', 'two']
+  },
+  defaultProp: {
+    type: String,
+    default: 'default-value'
   }
 });
 
