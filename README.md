@@ -14,13 +14,13 @@ A Mongoose model should be augmented so that the schema options contains a JSON 
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-	
+	...
 }, {
 	toJSON: {
 		transform: function (doc, ret, options) {
 			ret._links = {
 				describedBy: {
-					href: '/meta/models/example'
+					href: '/meta/schemas/example'
 				}
 			};
 		}
@@ -31,3 +31,17 @@ var model = mongoose.model('Example', schema);
 ```
 
 Now, every time the model is converted to JSON, the representation will convey to the client the link that describes the schema of the document. The representation uses the [HAL](http://stateless.co/hal_specification.html) convention but other san be used as well.
+
+### Exposing the schemas
+
+```javascript
+var express =  require('express'),
+		mongoose = require('mongoose'),
+		toSchema = require('mongoose-jsonschema').modelToJSONSchema;
+
+var app = express();
+
+app.get('/meta/schemas/:schema', function (req, res) {
+	res.send(toSchema(mongoose.model(req.params.schema)).end();
+});
+```
