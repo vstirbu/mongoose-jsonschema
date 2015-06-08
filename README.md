@@ -4,6 +4,13 @@
 
 This library represents a practical approach to convert the schemas used in a Mongoose model so that they can conveyed to hypermedia clients that interact with the web service.
 
+## Installation
+
+```
+npm install mongoose-jsonschema
+```
+
+
 ## Usage
 
 ### Adding hypermedia controls in the Mongoose model
@@ -37,11 +44,13 @@ Now, every time the model is converted to JSON, the representation will convey t
 ```javascript
 var express =  require('express'),
 		mongoose = require('mongoose'),
-		toSchema = require('mongoose-jsonschema').modelToJSONSchema;
+		jsonSchema = require('mongoose-jsonschema').modelToJSONSchema;
 
 var app = express();
 
 app.get('/meta/schemas/:schema', function (req, res) {
-	res.send(toSchema(mongoose.model(req.params.schema)).end();
+	res.set({
+		'Content-Type': 'application/schema+json'
+	}).send(jsonSchema(mongoose.model(req.params.schema)).end();
 });
 ```
