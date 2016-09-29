@@ -1,5 +1,8 @@
 # Mongoose schema to JSON schema and back
 
+[![Build Status](https://travis-ci.org/vstirbu/mongoose-jsonschema.svg?branch=master)](https://travis-ci.org/vstirbu/mongoose-jsonschema)
+[![Coverage Status](https://coveralls.io/repos/github/vstirbu/mongoose-jsonschema/badge.svg?branch=master)](https://coveralls.io/github/vstirbu/mongoose-jsonschema?branch=master)
+
 ## Motivation
 
 This library represents a practical approach to convert the schemas used in a Mongoose model so that they can conveyed to hypermedia clients that interact with the web service.

@@ -1,10 +1,12 @@
 {
   "name": "mongoose-jsonschema",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mongoose schema to JSON schema and back",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test-cov": "istanbul cover _mocha -- -R spec --check-leaks",
+    "test-travis": "istanbul cover _mocha --report lcovonly -- --reporter dot"
   },
   "keywords": [
     "mongoose",
@@ -15,11 +17,12 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^2.2.0",
-    "mongoose": "^3.8.24",
-    "mongoose-schema-extend": "^0.1.7"
+    "mongoose": "^4.6.1",
+    "mongoose-schema-extend": "^0.2.2"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
-    "mocha": "^2.2.5"
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "mocha": "^3.1.0"
   }
 }
