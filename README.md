@@ -1,5 +1,6 @@
 # Mongoose schema to JSON schema and back
 
+[![npm version](https://badge.fury.io/js/mongoose-jsonschema.svg)](https://badge.fury.io/js/mongoose-jsonschema)
 [![Build Status](https://travis-ci.org/vstirbu/mongoose-jsonschema.svg?branch=master)](https://travis-ci.org/vstirbu/mongoose-jsonschema)
 [![Coverage Status](https://coveralls.io/repos/github/vstirbu/mongoose-jsonschema/badge.svg?branch=master)](https://coveralls.io/github/vstirbu/mongoose-jsonschema?branch=master)
 
