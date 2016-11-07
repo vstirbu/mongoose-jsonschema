@@ -5,6 +5,7 @@ var schema = new mongoose.Schema({
 	arrayTypedProp: [{
 		type: Object
 	}],
+	mixedProp: {type: mongoose.Schema.Types.Mixed},
 	booleanProp: Boolean,
 	dateProp: Date,
 	numberProp: Number,
