@@ -56,4 +56,25 @@ describe('modelToJSONSchema', function () {
     expect(jsonSchema.properties.root.properties.nestedProp).to.exist;
     expect(jsonSchema.properties.root.required).to.be.deep.equal(['nestedProp']);
   });
+  
+  describe('options', function(){
+    describe('reserved', function(){
+      it('should filter out fields provided as an array', function(){
+        var jsonSchema = lib.modelToJSONSchema(mongoose.model('Types'), {
+          reserved: ['stringProp']
+        });
+        expect(jsonSchema.properties.stringProp).to.be.undefined;
+      });
+      it('should filter out fields as defined in a flag map', function(){
+        var jsonSchema = lib.modelToJSONSchema(mongoose.model('Types'), {
+          reserved: {
+            stringProp: true,
+            _id: false
+          }
+        });
+        expect(jsonSchema.properties.stringProp).to.be.undefined;
+        expect(jsonSchema.properties._id).to.exist;
+      });
+    })
+  });
 });
