@@ -14,7 +14,6 @@ This library represents a practical approach to convert the schemas used in a Mo
 npm install mongoose-jsonschema
 ```
 
-
 ## Usage
 
 ### Adding hypermedia controls in the Mongoose model
@@ -58,3 +57,16 @@ app.get('/meta/schemas/:schema', function (req, res) {
 	}).send(jsonSchema(mongoose.model(req.params.schema)).end();
 });
 ```
+
+## API
+
+### modelToJSONSchema(model, options) ⇒ <code>Object</code> ⏏
+**Kind**: Exported function  
+**Returns**: <code>Object</code> - JSONSchema  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| model | <code>object</code> | Mongoose model to be converted |
+| options | <code>object</code> | Options for customising model conversion |
+| options.reserved | <code>Array.&lt;string&gt;</code> &#124; <code>object</code> | Model properties found in the array are not included in the schema or map of properties to be converted |
+| options.reserved.property | <code>boolean</code> | Include/do not include model `property` into schema |
