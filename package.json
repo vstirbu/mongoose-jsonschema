@@ -1,6 +1,6 @@
 {
   "name": "mongoose-jsonschema",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Mongoose schema to JSON schema and back",
   "main": "lib/index.js",
   "scripts": {
