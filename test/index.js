@@ -22,6 +22,8 @@ describe('modelToJSONSchema', function () {
 
     expect(jsonSchema.properties.mixedProp.type).to.be.equal('object');
 
+    expect(jsonSchema.properties.objectId.type).to.be.equal('string');
+
     expect(jsonSchema.properties.booleanProp.type).to.be.equal('boolean');
 
     expect(jsonSchema.properties.numberProp.type).to.be.equal('number');
