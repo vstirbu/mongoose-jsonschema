@@ -54,7 +54,7 @@ var app = express();
 app.get('/meta/schemas/:schema', function (req, res) {
 	res.set({
 		'Content-Type': 'application/schema+json'
-	}).send(jsonSchema(mongoose.model(req.params.schema)).end();
+	}).send(jsonSchema(mongoose.model(req.params.schema))).end();
 });
 ```
 
