@@ -75,6 +75,16 @@ describe('modelToJSONSchema', function () {
     expect(jsonSchema.properties.address.required).to.be.deep.equal(['country', 'postal_code', 'locality', 'street_address']);
   });
 
+  it('should convert virtual properties (such as functions..)', function () {
+    var jsonSchema = lib.modelToJSONSchema(mongoose.model('VirtualFunction'));
+
+    expect(jsonSchema.properties.stringProp).to.exist;
+    expect(jsonSchema.properties.stringProp.type).to.be.equal('string');
+
+    expect(jsonSchema.properties.numberProp).to.exist;
+    expect(jsonSchema.properties.numberProp.type).to.be.equal('number');
+  });
+
   describe('options', function(){
     describe('reserved', function(){
       it('should filter out fields provided as an array', function(){
