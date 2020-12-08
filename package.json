@@ -1,8 +1,9 @@
 {
   "name": "mongoose-jsonschema",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Mongoose schema to JSON schema and back",
   "main": "lib/index.js",
+  "typings": "lib/local-types/mongoose-jsonschema/index.d.ts",
   "scripts": {
     "test": "ts-mocha -p tsconfig.json test/**/typegoose-test.ts",
     "test-cov": "istanbul cover _mocha -- -R spec --check-leaks",
