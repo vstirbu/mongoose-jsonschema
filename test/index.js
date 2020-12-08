@@ -2,6 +2,7 @@
 /// <reference path="../typings/mocha/mocha.d.ts"/>
 /// <reference path="../typings/mongoose/mongoose.d.ts"/>
 
+
 var chai = require('chai'),
     mongoose = require('mongoose'),
 
@@ -16,8 +17,9 @@ describe('modelToJSONSchema', function () {
     expect(jsonSchema.properties.arrayProp.type).to.be.equal('array');
 
     expect(jsonSchema.properties.arrayTypedProp.type).to.be.equal('array');
+    // updated mongoose which cause object to be mixed in this case
     expect(jsonSchema.properties.arrayTypedProp.items).to.be.deep.equal({
-      type: 'object'
+      type: 'mixed'
     });
 
     expect(jsonSchema.properties.mixedProp.type).to.be.equal('object');
@@ -59,6 +61,29 @@ describe('modelToJSONSchema', function () {
     expect(jsonSchema.properties.root.properties).to.exist;
     expect(jsonSchema.properties.root.properties.nestedProp).to.exist;
     expect(jsonSchema.properties.root.required).to.be.deep.equal(['nestedProp']);
+  });
+
+  it('should convert nested schema object', function () {
+    var jsonSchema = lib.modelToJSONSchema(mongoose.model('SchemaInSchema'));
+
+    expect(jsonSchema.properties.name).to.exist;
+    expect(jsonSchema.properties.address).to.exist;
+    expect(jsonSchema.required).to.be.deep.equal(['address', 'name']);
+    expect(jsonSchema.properties.address.properties.street_address).to.exist;
+    expect(jsonSchema.properties.address.properties.postal_code).to.exist;
+    expect(jsonSchema.properties.address.properties.locality).to.exist;
+    expect(jsonSchema.properties.address.properties.country).to.exist;
+    expect(jsonSchema.properties.address.required).to.be.deep.equal(['country', 'postal_code', 'locality', 'street_address']);
+  });
+
+  it('should convert virtual properties (such as functions..)', function () {
+    var jsonSchema = lib.modelToJSONSchema(mongoose.model('VirtualFunction'));
+
+    expect(jsonSchema.properties.stringProp).to.exist;
+    expect(jsonSchema.properties.stringProp.type).to.be.equal('string');
+
+    expect(jsonSchema.properties.numberProp).to.exist;
+    expect(jsonSchema.properties.numberProp.type).to.be.equal('number');
   });
 
   describe('options', function(){
