@@ -1,2 +1,4 @@
 --reporter list
 --require test/support/node.js
+./test
+--recursive

@@ -17,8 +17,9 @@ describe('modelToJSONSchema', function () {
     expect(jsonSchema.properties.arrayProp.type).to.be.equal('array');
 
     expect(jsonSchema.properties.arrayTypedProp.type).to.be.equal('array');
+    // updated mongoose which cause object to be mixed in this case
     expect(jsonSchema.properties.arrayTypedProp.items).to.be.deep.equal({
-      type: 'object'
+      type: 'mixed'
     });
 
     expect(jsonSchema.properties.mixedProp.type).to.be.equal('object');
